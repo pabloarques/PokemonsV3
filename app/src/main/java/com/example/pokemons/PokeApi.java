@@ -1,5 +1,7 @@
 package com.example.pokemons;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -12,7 +14,6 @@ public class PokeApi {
 
         try {
             String result = HttpUtils.get(url);
-
             JSONObject jsonResult = new JSONObject(result);
             JSONArray results = jsonResult.getJSONArray("results");
 
@@ -22,7 +23,7 @@ public class PokeApi {
                 JSONObject pokemonJson = results.getJSONObject(i);
                 Pokemon pokemon = new Pokemon();
 
-                pokemon.setNombre(pokemonJson.getString("nombre"));
+                pokemon.setNombre(pokemonJson.getString("name"));
                 pokemon.setDetailsURL(pokemonJson.getString("url"));
 
                 String resultDetails = HttpUtils.get(pokemon.getDetailsURL());
@@ -33,7 +34,7 @@ public class PokeApi {
                 String spriteDefault = sprites.getString(("front_default"));
                 pokemon.setImage(spriteDefault);
 
-                pokemon.setPeso(jsonDetails.getInt("peso"));
+                pokemon.setPeso(jsonDetails.getInt("height"));
 
                 pokearray.add(pokemon);
             }
