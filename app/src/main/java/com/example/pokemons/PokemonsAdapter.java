@@ -1,6 +1,7 @@
 package com.example.pokemons;
 
 import android.content.Context;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,14 +9,19 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
+import com.bumptech.glide.Glide;
+
+import java.util.List;
 
 public class PokemonsAdapter extends ArrayAdapter<Pokemon> {
-    public PokemonsAdapter(@NonNull Context context, int resource, int textViewResourceId, @NonNull Pokemon[] objects) {
-        super(context, resource, textViewResourceId, objects);
+    private int position;
+    private View convertView;
+    private ViewGroup parent;
 
-
+    public PokemonsAdapter(Context context, int resource, List<Pokemon> objects) {
+        super(context, resource, objects);
     }
+
 
     public View getView(int position, View convertView, ViewGroup parent){
 
@@ -32,6 +38,10 @@ public class PokemonsAdapter extends ArrayAdapter<Pokemon> {
         ImageView img_poke = convertView.findViewById(R.id.img_poke);
 
         txtPoke.setText(pokemon.getNombre());
+
+        Glide.with(getContext()).load(
+                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + pokemon.getImage()
+        ).into(img_poke);
 
         return convertView;
     }

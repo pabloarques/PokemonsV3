@@ -1,6 +1,6 @@
 package com.example.pokemons;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
-import androidx.core.view.MenuProvider;
+
 import androidx.fragment.app.Fragment;
 
 import com.example.pokemons.databinding.FragmentFirstBinding;
@@ -19,7 +19,7 @@ import com.example.pokemons.databinding.FragmentFirstBinding;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.zip.Inflater;
+
 
 public class FirstFragment extends Fragment {
 
