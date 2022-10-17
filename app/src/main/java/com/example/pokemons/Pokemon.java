@@ -1,12 +1,16 @@
 package com.example.pokemons;
 
-public class Pokemon {
+import java.io.Serializable;
+
+public class Pokemon implements Serializable {
 
     private String nombre;
     private int peso;
     private int altura;
     private String image;
     private String DetailsURL;
+    private String tipo;
+
 
 
     @Override
@@ -17,6 +21,7 @@ public class Pokemon {
                 ", altura=" + altura +
                 ", image='" + image + '\'' +
                 ", DetailsURL='" + DetailsURL + '\'' +
+                ", tipo='" + tipo + '\'' +
                 '}';
     }
 
@@ -54,6 +59,14 @@ public class Pokemon {
 
     public String getDetailsURL() {
         return DetailsURL;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public void setDetailsURL(String detailsURL) {

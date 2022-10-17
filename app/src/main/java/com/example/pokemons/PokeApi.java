@@ -29,12 +29,19 @@ public class PokeApi {
                 String resultDetails = HttpUtils.get(pokemon.getDetailsURL());
                 JSONObject jsonDetails = new JSONObject(resultDetails);
 
-
+                //Recorrer para llegar hasta la imagen
                 JSONObject sprites = jsonDetails.getJSONObject("sprites");
                 String spriteDefault = sprites.getString(("front_default"));
                 pokemon.setImage(spriteDefault);
 
                 pokemon.setPeso(jsonDetails.getInt("height"));
+
+                //PETA LA APP AQUI HAY QUE MIRAR QUE FALLA
+             /*  JSONObject types = jsonDetails.getJSONObject("types");
+               JSONObject contenidoType = jsonDetails.getJSONObject("0");
+               String type = contenidoType.getString("name");
+               pokemon.setTipo(type);
+            */
 
                 pokearray.add(pokemon);
             }
