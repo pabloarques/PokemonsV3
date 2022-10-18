@@ -25,7 +25,7 @@ public class Pokemon implements Serializable {
                 '}';
     }
 
-    public String getNombre() {
+    public  String getNombre() {
         return nombre;
     }
 

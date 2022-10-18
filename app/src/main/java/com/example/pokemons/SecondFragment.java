@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.bumptech.glide.Glide;
 import com.example.pokemons.databinding.FragmentSecondBinding;
 
 public class SecondFragment extends Fragment {
@@ -29,6 +30,25 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Bundle args = getArguments();
+
+        if(args != null){
+            Pokemon item = (Pokemon) args.getSerializable("item");
+
+
+        }
+
+
+    }
+
+    private void actualizar(Pokemon pokemon){
+
+        binding.txtName.setText(pokemon.getNombre());
+        binding.txtAltura.setText(pokemon.getAltura());
+        binding.txtPeso.setText(pokemon.getPeso());
+        Glide.with(getContext()).load(
+                pokemon.getImage()
+        ).into(binding.imgPoke2);
 
     }
 

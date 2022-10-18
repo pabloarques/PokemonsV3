@@ -19,11 +19,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.preference.PreferenceManager;
 
 import com.bumptech.glide.Glide;
 import com.example.pokemons.databinding.FragmentFirstBinding;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -63,8 +65,18 @@ public class FirstFragment extends Fragment {
         binding.lvPokemon.setAdapter(adapter);
         refresh();
 
+
         //probar mañana
-        binding.lvPokemon.getOnItemClickListener();
+        binding.lvPokemon.setOnItemClickListener((adapter, fragment, i, l) -> {
+            Pokemon poke = (Pokemon) adapter.getItemAtPosition(i);
+            Bundle args = new Bundle();
+
+            args.putSerializable("item", items);
+
+            NavHostFragment.findNavController(FirstFragment.this)
+                    .navigate(R.id.action_FirstFragment_to_SecondFragment, args);
+        
+         });
     }
 
     class PokemonsAdapter extends ArrayAdapter<Pokemon> {
@@ -120,7 +132,6 @@ public class FirstFragment extends Fragment {
 
         executor.execute(()-> {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-
 
             PokeApi api = new PokeApi();
             ArrayList <Pokemon> pokemons = api.getPokemon();

@@ -37,11 +37,11 @@ public class PokeApi {
                 pokemon.setPeso(jsonDetails.getInt("height"));
 
                 //PETA LA APP AQUI HAY QUE MIRAR QUE FALLA
-             /*  JSONObject types = jsonDetails.getJSONObject("types");
-               JSONObject contenidoType = jsonDetails.getJSONObject("0");
+              /* JSONObject types = jsonDetails.getJSONObject("types");
+               JSONObject contenidoType = jsonDetails.getJSONObject("type");
                String type = contenidoType.getString("name");
                pokemon.setTipo(type);
-            */
+                */
 
                 pokearray.add(pokemon);
             }
