@@ -33,8 +33,11 @@ public class SecondFragment extends Fragment {
         Bundle args = getArguments();
 
         if(args != null){
-            Pokemon item = (Pokemon) args.getSerializable("item");
+            Pokemon pokemon = (Pokemon) args.getSerializable("items");
 
+            if(pokemon != null){
+                actualizar(pokemon);
+            }
 
         }
 

@@ -66,12 +66,12 @@ public class FirstFragment extends Fragment {
         refresh();
 
 
-        //probar mañana
+        //enviar pokemons al second fragment
         binding.lvPokemon.setOnItemClickListener((adapter, fragment, i, l) -> {
             Pokemon poke = (Pokemon) adapter.getItemAtPosition(i);
             Bundle args = new Bundle();
 
-            args.putSerializable("item", items);
+            args.putSerializable("items", items);
 
             NavHostFragment.findNavController(FirstFragment.this)
                     .navigate(R.id.action_FirstFragment_to_SecondFragment, args);
